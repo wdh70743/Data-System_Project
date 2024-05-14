@@ -27,6 +27,15 @@ Before you begin, ensure you have met the following requirements:
 3. Install the required Python packages:
    ```bash
    pip install -r requirements.txt
+
+## Setting Up Environment Variables
+1. Create a .env file in the project directory
+2. Open the .env file in a text editor and add the necessary environment variables. For example:
+   ```bash
+   DB_USERNAME=
+   DB_PASSWORD=
+   DB_HOST=
+   DATABASE=
    
 ## Running the Application
 
