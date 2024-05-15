@@ -139,6 +139,10 @@ venv.bak/
 # Rope project settings
 .ropeproject
 
+.streamlit/
+lib/streamlit/static
+streamlit-storage
+
 # mkdocs documentation
 /site
 
@@ -166,6 +170,7 @@ cython_debug/
 ### Python Patch ###
 # Poetry local configuration file - https://python-poetry.org/docs/configuration/#local-configuration
 poetry.toml
+secrets.toml
 
 # ruff
 .ruff_cache/
