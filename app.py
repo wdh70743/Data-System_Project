@@ -17,7 +17,7 @@ def get_db_connection():
         host=st.secrets["DB_HOST"],
         database=st.secrets["DATABASE"],
         query={
-            "driver": "ODBC Driver 18 for SQL Server",
+            "driver": "ODBC Driver 17 for SQL Server",
             "encrypt": "yes",
             "TrustServerCertificate": "no",
             "Connection Timeout": "30"
