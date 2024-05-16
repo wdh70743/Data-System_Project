@@ -25,7 +25,7 @@ def create_account(name, email, address, region, department, password):
     try:
         session.execute(
             text(
-                "INSERT INTO Users (UserID, name, email, address, region, department, password, dateCreated) VALUES (:Prop_0, :name, :email, :address, :region, :department, :password, :dateCreated)"
+                "INSERT INTO Users (UserID, name, email, address, region, department, password, dateCreated) VALUES (:UserID, :name, :email, :address, :region, :department, :password, :dateCreated)"
             ),
             {'UserID': str(random.randint(50000, 17500000)),'name': name, 'email': email, 'address': address, 'region': region, 'department': department,
              'password': password, 'dateCreated': dateCreated}
