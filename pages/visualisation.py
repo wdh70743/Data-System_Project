@@ -10,7 +10,7 @@ if 'is_authenticated' not in st.session_state:
 def fetch_stock_prices():
     engine = get_db_connection()
     with engine.connect() as connection:
-        result = pd.read_sql_query("SELECT Date, [Open], High, Low, [Close], Adj_Close, Volume FROM StockPrice",
+        result = pd.read_sql_query("SELECT date, [open], high, low, [close], adj_close, volume FROM StockPrice",
                                    connection)
     return result
 
@@ -31,7 +31,7 @@ def fetch_mining_company():
 def fetch_predicted_price():
     engine = get_db_connection()
     with engine.connect() as connection:
-        result = pd.read_sql_query("SELECT PredictedPrice, Date FROM PricePrediction", connection)
+        result = pd.read_sql_query("SELECT predictedPrice, date FROM PricePrediction", connection)
     return result
 
 
@@ -50,7 +50,7 @@ def main():
             google_trends = future_google_trends.result()
             predicted_price = future_predicted_price.result()
 
-    stock_price['Date'] = pd.to_datetime(stock_price['Date'])
+    stock_price['date'] = pd.to_datetime(stock_price['date'])
     st.header("Actual Stock Price Line Chart (USD)")
     st.line_chart(data=stock_price, x='Date', y='Close', width=1300, height=400)
 
@@ -63,11 +63,11 @@ def main():
     st.line_chart(data=mining_company, x='dateTime', y='elementPrice', width=1300, height=400)
 
     st.header("Actual Stock Price & Predicted Price (USD)")
-    stock_price['Date'] = pd.to_datetime(stock_price['Date'].apply(lambda x: str(x).split()[0])).dt.date
-    predicted_price['Date'] = pd.to_datetime(predicted_price['Date']).dt.date
-    combined_data = predicted_price.set_index('Date').join(stock_price.set_index('Date'), how='inner', lsuffix='_pred', rsuffix='_actual').reset_index()
+    stock_price['date'] = pd.to_datetime(stock_price['date'].apply(lambda x: str(x).split()[0])).dt.date
+    predicted_price['date'] = pd.to_datetime(predicted_price['date']).dt.date
+    combined_data = predicted_price.set_index('date').join(stock_price.set_index('date'), how='inner', lsuffix='_pred', rsuffix='_actual').reset_index()
     print(combined_data)
-    st.line_chart(data=combined_data, x='Date', y=['Close', 'PredictedPrice'], width=1300, height=400, color=["#FF0000", "#0000FF"])
+    st.line_chart(data=combined_data, x='Date', y=['close', 'predictedPrice'], width=1300, height=400, color=["#FF0000", "#0000FF"])
 
 
 

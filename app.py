@@ -82,7 +82,7 @@ def main():
                     "Address": user[3],
                     "Region": user[4],
                     "Department": user[5],
-                    "createdAt": user[7]
+                    "CreatedAt": user[7]
                 }
                 st.switch_page('pages/visualisation.py')
             else:
