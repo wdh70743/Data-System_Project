@@ -1,4 +1,5 @@
 # Data Warehouse For Tesla Stock Price Prediction
+![image](https://github.com/wdh70743/Data-System_Project/assets/80554373/2accef2c-67e1-449f-b2dd-be433cd17b05)
 
 ## Prerequisites
 
