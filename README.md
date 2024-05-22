@@ -1,6 +1,5 @@
-# Project Title
-
-Data Warehouse for Tesla Stock Price Prediction
+# Data Warehouse For Tesla Stock Price Prediction
+![image](https://github.com/wdh70743/Data-System_Project/assets/80554373/2accef2c-67e1-449f-b2dd-be433cd17b05)
 
 ## Prerequisites
 
@@ -9,6 +8,7 @@ Before you begin, ensure you have met the following requirements:
 - You have a Windows/Linux/Mac machine.
 - You have installed Python 3.12.
 - You have an internet connection.
+- You have a SQL database on Azure
 
 ## Installing the ODBC Driver for SQL Server
 
@@ -29,8 +29,8 @@ Before you begin, ensure you have met the following requirements:
    pip install -r requirements.txt
 
 ## Setting Up Environment Variables
-1. Create a .env file in the project directory
-2. Open the .env file in a text editor and add the necessary environment variables. For example:
+1. Create a .streamlit file in the project directory
+2. Create the secrets.toml file in a text editor and add the necessary environment variables. For example:
    ```bash
    DB_USERNAME=
    DB_PASSWORD=
