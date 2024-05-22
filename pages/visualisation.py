@@ -10,7 +10,7 @@ if 'is_authenticated' not in st.session_state:
 def fetch_stock_prices():
     engine = get_db_connection()
     with engine.connect() as connection:
-        result = pd.read_sql_query("SELECT date, [open], high, low, [close], adj_close, volume FROM StockPrice",
+        result = pd.read_sql_query("SELECT [date], [open], high, low, [close], adj_close, volume FROM StockPrice",
                                    connection)
     return result
 
@@ -52,7 +52,7 @@ def main():
 
     stock_price['date'] = pd.to_datetime(stock_price['date'])
     st.header("Actual Stock Price Line Chart (USD)")
-    st.line_chart(data=stock_price, x='Date', y='Close', width=1300, height=400)
+    st.line_chart(data=stock_price, x='date', y='Close', width=1300, height=400)
 
     google_trends['timeRange'] = pd.to_datetime(google_trends['timeRange'])
     st.header("Google Trends Line Chart (USD)")
@@ -67,7 +67,7 @@ def main():
     predicted_price['date'] = pd.to_datetime(predicted_price['date']).dt.date
     combined_data = predicted_price.set_index('date').join(stock_price.set_index('date'), how='inner', lsuffix='_pred', rsuffix='_actual').reset_index()
     print(combined_data)
-    st.line_chart(data=combined_data, x='Date', y=['close', 'predictedPrice'], width=1300, height=400, color=["#FF0000", "#0000FF"])
+    st.line_chart(data=combined_data, x='date', y=['close', 'predictedPrice'], width=1300, height=400, color=["#FF0000", "#0000FF"])
 
 
 
