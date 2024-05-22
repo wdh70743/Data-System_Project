@@ -52,7 +52,7 @@ def main():
 
     stock_price['date'] = pd.to_datetime(stock_price['date'])
     st.header("Actual Stock Price Line Chart (USD)")
-    st.line_chart(data=stock_price, x='date', y='Close', width=1300, height=400)
+    st.line_chart(data=stock_price, x='date', y='close', width=1300, height=400)
 
     google_trends['timeRange'] = pd.to_datetime(google_trends['timeRange'])
     st.header("Google Trends Line Chart (USD)")
